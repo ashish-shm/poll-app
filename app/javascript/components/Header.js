@@ -1,15 +1,13 @@
 import React from 'react'
+import AuthHeader from './AuthHeader'
+import NonAuthHeader from './NonAuthHeader'
 
-function Header() {
+function Header(props) {
+    let { loggedInUser } = props
+
     return (
         <header className='header'>
-            <div className='flex'>
-                <h1 className='heading'>Poll-App</h1>
-                <nav className='flex'>
-                    <a className='link' href='/login'>Login</a>
-                    <a className='link' href='/register'>Register</a>
-                </nav>
-            </div>
+            {loggedInUser ? <AuthHeader loggedInUser={loggedInUser.name} /> : <NonAuthHeader />}
         </header>
     )
 }
