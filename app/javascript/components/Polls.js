@@ -1,12 +1,13 @@
 import React from 'react'
+import Header from './Header'
 
 function Polls(props) {
-    let { polls } = props
+    let { polls, loggedInUser } = props
     console.log(polls)
     return (
-        <div>
-            <h1 className='heading'>Hello pools</h1>
-        </div>
+        <>
+            <Header loggedInUser={loggedInUser} />
+        </>
     )
 }
 

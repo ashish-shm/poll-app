@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import Header from './Header'
+
 
 function NewPoll(props) {
-    const { isLoggedIn } = props
+    const { isLoggedIn, loggedInUser } = props
     const [inputs, setInputs] = useState({});
     let url = "http://localhost:3000/polls"
     const headers = {
@@ -32,6 +34,8 @@ function NewPoll(props) {
     return (
         <>
             {isLoggedIn ? <form onSubmit={handleSubmit}>
+                <Header loggedInUser={loggedInUser} />
+
                 <div>
                     <label>Question</label>
                     <input type="text" name="question" onChange={handleInputChange} value={inputs.question} required />
