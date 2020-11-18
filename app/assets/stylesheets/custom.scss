@@ -52,16 +52,17 @@ table {
 body{
     height: 100%;
     overflow: hidden;
+    background-color: black;
+    opacity: .6;
 }
 
 .header{
-    background-color: black;
-    opacity: .9;
+    
     padding: 20px;
 }
 
 .heading{
-    font-size: 40px;
+    font-size: 34px;
     text-shadow: whitesmoke;
     color: darkcyan;
 
@@ -75,26 +76,34 @@ body{
 
 .link{
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     text-shadow: whitesmoke;
     color: darkcyan;
     margin-right: 30px;
-
+    cursor: pointer;
 }
 // Hero Section
 
 .hero-section{
-    background-color: black;
-    opacity: .75;
-    padding: 220px;
+    text-align: center;
+    padding: 200px;
 }
 
 .hero-text{
-    text-align: center;
-    color: whitesmoke;
-    font-size: 50px;
+    
+    color: white;
+    font-size: 34px;
     margin: 50px;
     
+}
+
+.hero-link{
+  color: darkcyan;
+  font-size: 34px;
+  cursor: pointer;
+  text-decoration: none;
+
+
 }
 
 /* Register */
