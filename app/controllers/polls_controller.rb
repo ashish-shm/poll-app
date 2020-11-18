@@ -1,12 +1,22 @@
 class PollsController < ApplicationController
   def index
+    @polls = Poll.all
   end
 
   def create
-    @isLoggedIn = logged_in?
+    if logged_in?
+      @poll = Poll.new(poll_params)
+      @poll.save
+    end
   end
 
   def new
     @isLoggedIn = logged_in?
+  end
+
+  private
+  def poll_params
+    params.require(:poll).permit(:question, :option1, :option2,
+    :option3, :option4)
   end
 end
