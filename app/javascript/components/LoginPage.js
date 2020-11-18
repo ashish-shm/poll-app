@@ -22,7 +22,7 @@ function LoginPage() {
                 body: JSON.stringify({ session: inputs }),
             })
                 .then((res) => {
-                    if (res.status == 200)
+                    if (res.status == 204)
                         (window.location.href = '/')
                 })
                 .catch((err) => setError(err));
