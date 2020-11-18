@@ -20,7 +20,7 @@ function AuthHeader(props) {
     }
     return (
         <div className='flex'>
-            <h1 className='heading'>Poll-App</h1>
+            <a className='heading' href='/'>Poll-App</a>
             <nav className='flex'>
                 <h1 className='link'>{props.loggedInUser}</h1>
                 <h1 className='link' onClick={handleClick}>Logout</h1>

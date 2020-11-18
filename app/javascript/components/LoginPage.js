@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import Header from './Header'
 
-function LoginPage() {
+function LoginPage(props) {
     const [inputs, setInputs] = useState({});
+    const { loggedInUser } = props
+
     let url = "http://localhost:3000/login"
     const headers = {
         "Content-Type": "application/json",
@@ -30,7 +33,7 @@ function LoginPage() {
     }
     return (
         <>
-
+            <Header loggedInUser={loggedInUser} />
             <form onSubmit={handleSubmit}>
 
                 <div>

@@ -3,7 +3,7 @@ import React from 'react'
 function NonAuthHeader() {
     return (
         <div className='flex'>
-            <h1 className='heading'>Poll-App</h1>
+            <a className='heading' href='/'>Poll-App</a>
             <nav className='flex'>
                 <a className='link' href='/login'>Login</a>
                 <a className='link' href='/register'>Register</a>
