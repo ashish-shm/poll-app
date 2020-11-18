@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/register', to:'users#new'
   post '/register', to:'users#create'
+  resources :polls, only: [:new, :create, :index]
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

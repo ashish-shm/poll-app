@@ -3,8 +3,10 @@ class PollsController < ApplicationController
   end
 
   def create
+    @isLoggedIn = logged_in?
   end
 
   def new
+    @isLoggedIn = logged_in?
   end
 end
