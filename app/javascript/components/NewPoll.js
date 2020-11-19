@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Authorisation from "./Authorisation";
 import Header from './Header'
 
 
@@ -33,34 +34,36 @@ function NewPoll(props) {
     }
     return (
         <>
-            {isLoggedIn ? <form onSubmit={handleSubmit}>
-                <Header loggedInUser={loggedInUser} />
+            <Header loggedInUser={loggedInUser} />
 
-                <div>
-                    <label>Question</label>
-                    <input type="text" name="question" onChange={handleInputChange} value={inputs.question} required />
+            {isLoggedIn ?
+                <div className='polls-container'>
+                    <form onSubmit={handleSubmit}>
+
+                        <div>
+                            <label>Question</label>
+                            <input type="text" name="question" onChange={handleInputChange} value={inputs.question} required />
+                        </div>
+                        <div>
+                            <label>Enter option 1</label>
+                            <input type="text" name="option1" onChange={handleInputChange} value={inputs.option1} required />
+                        </div>
+                        <div>
+                            <label>Enter option 2</label>
+                            <input type="text" name="option2" onChange={handleInputChange} value={inputs.option2} />
+                        </div>
+                        <div>
+                            <label>Enter option 3</label>
+                            <input type="text" name="option3" onChange={handleInputChange} value={inputs.option3} />
+                        </div>
+                        <div>
+                            <label>Enter option 4</label>
+                            <input type="text" name="option4" onChange={handleInputChange} value={inputs.option4} />
+                        </div>
+                        <button className='btn' type="submit">Create Poll</button>
+                    </form>
                 </div>
-                <div>
-                    <label>Enter option 1</label>
-                    <input type="text" name="option1" onChange={handleInputChange} value={inputs.option1} required />
-                </div>
-                <div>
-                    <label>Enter option 2</label>
-                    <input type="text" name="option2" onChange={handleInputChange} value={inputs.option2} />
-                </div>
-                <div>
-                    <label>Enter option 3</label>
-                    <input type="text" name="option3" onChange={handleInputChange} value={inputs.option3} />
-                </div>
-                <div>
-                    <label>Enter option 4</label>
-                    <input type="text" name="option4" onChange={handleInputChange} value={inputs.option4} />
-                </div>
-                <button type="submit">Create Poll</button>
-            </form>
-                : <div className='Error'>
-                    <p className='heading'>You need to login before visiting this page</p>
-                    <a href='/login' className='link'>Login to you account</a></div>}
+                : <Authorisation />}
 
 
 

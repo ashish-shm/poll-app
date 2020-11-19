@@ -34,19 +34,21 @@ function LoginPage(props) {
     return (
         <>
             <Header loggedInUser={loggedInUser} />
-            <form onSubmit={handleSubmit}>
+            <div className='polls-container'>
+                <form onSubmit={handleSubmit}>
 
-                <div>
-                    <label>Email Address</label>
-                    <input type="email" name="email" onChange={handleInputChange} value={inputs.email} required />
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="password" name="password" onChange={handleInputChange} value={inputs.password} />
-                </div>
+                    <div className='form-control'>
+                        <label>Email Address</label>
+                        <input type="email" name="email" onChange={handleInputChange} value={inputs.email} required />
+                    </div>
+                    <div className='form-control'>
+                        <label>Password</label>
+                        <input type="password" name="password" onChange={handleInputChange} value={inputs.password} />
+                    </div>
 
-                <button type="submit">Sign In</button>
-            </form>
+                    <button className='btn' type="submit">Sign In</button>
+                </form>
+            </div>
 
 
 
