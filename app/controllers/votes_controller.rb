@@ -23,14 +23,14 @@ class VotesController < ApplicationController
       #Increment the vote
       vote_increment(params[:option])
       # votes_data = Vote.where(poll_id: params[:poll_id])
-      votes = Vote.where(poll_id: params[:poll_id])
-      votes_count_data = Hash.new(0)
-      votes_count_data["option1"] = votes.sum(:option1)
-      votes_count_data["option2"] = votes.sum(:option2)
-      votes_count_data["option3"] = votes.sum(:option3)
-      votes_count_data["option4"] = votes.sum(:option4)
-
+          
         if @vote.save
+          votes = Vote.where(poll_id: params[:poll_id])
+          votes_count_data = Hash.new(0)
+          votes_count_data["option1"] = votes.sum(:option1)
+          votes_count_data["option2"] = votes.sum(:option2)
+          votes_count_data["option3"] = votes.sum(:option3)
+          votes_count_data["option4"] = votes.sum(:option4)
           render status: :ok, json: { vote_data: { votes: votes_count_data } }
         end
     else

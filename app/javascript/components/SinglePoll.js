@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 function SinglePoll(props) {
     let { poll } = props
     let [error, setError] = useState("")
-    let [option, setOption] = useState("")
-    let [voteData, setVoteData] = useState("")
-    const [data, setdata] = useState(null)
+    // let [option, setOption] = useState("")
+    // let [voteData, setVoteData] = useState("")
+    const [data, setData] = useState(null)
     let url = `http://localhost:3000/polls/${poll.id}/votes`
     console.log(url)
     const headers = {
@@ -16,18 +16,16 @@ function SinglePoll(props) {
     const handleClick = async (event) => {
         let optionVal = await event.target.className.split(" ")[1]
 
-        await setOption(event.target.className && event.target.className.split(" ")[1])
+        // await setOption(event.target.className && event.target.className.split(" ")[1])
         await fetch(url, {
             method: "POST",
             headers: headers,
             body: JSON.stringify({ option: optionVal }),
         })
-            .then((res) => {
-                if (res.status == 200)
-                    return res.json()
-            }
+            .then((res) => res.json()
+
             )
-            .then((vote) => setdata(vote))
+            .then((vote) => setData(vote))
             .catch((err) => setError(err));
         console.log(error, 'from error')
         console.log(data)
@@ -42,6 +40,12 @@ function SinglePoll(props) {
                 <li><button onClick={handleClick} className='vote-btn option2'>{poll.option2}</button></li>
                 <li><button onClick={handleClick} className='vote-btn option3'>{poll.option3}</button></li>
                 <li><button onClick={handleClick} className='vote-btn option4'>{poll.option4}</button></li>
+            </ul>
+            <ul className='flex'>
+                <li className='vote-count'>{poll.option1}</li>
+                <li className='vote-count'>{poll.option1}</li>
+                <li className='vote-count'>{poll.option1}</li>
+                <li className='vote-count'>{poll.option1}</li>
             </ul>
         </div>
     )
