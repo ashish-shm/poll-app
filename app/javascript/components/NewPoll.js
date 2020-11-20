@@ -50,15 +50,15 @@ function NewPoll(props) {
                         </div>
                         <div>
                             <label>Enter option 2</label>
-                            <input type="text" name="option2" onChange={handleInputChange} value={inputs.option2} />
+                            <input type="text" name="option2" onChange={handleInputChange} value={inputs.option2} required />
                         </div>
                         <div>
                             <label>Enter option 3</label>
-                            <input type="text" name="option3" onChange={handleInputChange} value={inputs.option3} />
+                            <input type="text" name="option3" onChange={handleInputChange} value={inputs.option3} required />
                         </div>
                         <div>
                             <label>Enter option 4</label>
-                            <input type="text" name="option4" onChange={handleInputChange} value={inputs.option4} />
+                            <input type="text" name="option4" onChange={handleInputChange} value={inputs.option4} required />
                         </div>
                         <button className='btn' type="submit">Create Poll</button>
                     </form>

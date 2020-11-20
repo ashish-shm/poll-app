@@ -43,7 +43,7 @@ function LoginPage(props) {
                     </div>
                     <div className='form-control'>
                         <label>Password</label>
-                        <input type="password" name="password" onChange={handleInputChange} value={inputs.password} />
+                        <input type="password" name="password" onChange={handleInputChange} value={inputs.password} required />
                     </div>
 
                     <button className='btn' type="submit">Sign In</button>
