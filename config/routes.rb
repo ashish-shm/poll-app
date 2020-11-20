@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/register', to:'users#new'
   post '/register', to:'users#create'
   resources :polls, only: [:new, :create, :index] do
-      get '/votes', to: 'votes#create'
+      post '/votes', to: 'votes#create'
   end
 
 
