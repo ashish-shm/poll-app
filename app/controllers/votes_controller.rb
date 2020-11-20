@@ -14,15 +14,10 @@ class VotesController < ApplicationController
       @vote = Vote.new
         @vote.poll_id =  params[:poll_id]
         @vote.user_id = current_user.id
-        # @vote.option1 ||= 0
-        # @vote.option2 ||= 0
-        # @vote.option3 ||= 0
-        # @vote.option4 ||= 0
-      # @vote.params[:option] += 1 
+       
       
       #Increment the vote
       vote_increment(params[:option])
-      # votes_data = Vote.where(poll_id: params[:poll_id])
           
         if @vote.save
           votes = Vote.where(poll_id: params[:poll_id])
@@ -66,7 +61,5 @@ class VotesController < ApplicationController
 
     end
 
-    # def vote_params
-    #   params.require(:vote).permit(:poll_id, :option1, :option2, :option3, :option4, :user_id)
-    # end
+   
 end

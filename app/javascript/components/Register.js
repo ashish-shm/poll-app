@@ -46,11 +46,11 @@ function Register(props) {
                     </div>
                     <div className='form-control'>
                         <label>Password</label>
-                        <input type="password" name="password" onChange={handleInputChange} value={inputs.password} />
+                        <input type="password" name="password" onChange={handleInputChange} value={inputs.password} required />
                     </div>
                     <div className='form-control'>
                         <label>Re-enter Password</label>
-                        <input type="password" name="password_confirmation" onChange={handleInputChange} value={inputs.password_confirmation} />
+                        <input type="password" name="password_confirmation" onChange={handleInputChange} value={inputs.password_confirmation} required />
                     </div>
                     <button className='btn' type="submit">Sign Up</button>
                 </form>

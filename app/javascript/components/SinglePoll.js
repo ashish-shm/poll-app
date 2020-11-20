@@ -3,33 +3,40 @@ import React, { useState } from 'react'
 function SinglePoll(props) {
     let { poll } = props
     let [error, setError] = useState("")
-    // let [option, setOption] = useState("")
-    // let [voteData, setVoteData] = useState("")
+    let [errorMsg, setErrorMsg] = useState("")
     const [data, setData] = useState(null)
-    let url = `http://localhost:3000/polls/${poll.id}/votes`
+    var url = `http://localhost:3000/polls/${poll.id}/votes`
     console.log(url)
     const headers = {
         "Content-Type": "application/json",
         "X-CSRF-TOKEN": document.querySelector('[name="csrf-token"]').content,
     }
 
-    const handleClick = async (event) => {
-        let optionVal = await event.target.className.split(" ")[1]
-
-        // await setOption(event.target.className && event.target.className.split(" ")[1])
-        await fetch(url, {
+    var handleClick = async (event) => {
+        var optionVal = await event.target.className.split(" ")[1]
+        setErrorMsg("")
+        fetch(url, {
             method: "POST",
             headers: headers,
             body: JSON.stringify({ option: optionVal }),
         })
-            .then((res) => res.json()
-
-            )
+            .then((res) => {
+                if (res.status == 403) {
+                    setErrorMsg("Already voted")
+                    return
+                }
+                return res.json()
+            })
             .then((vote) => setData(vote))
             .catch((err) => setError(err));
-        console.log(error, 'from error')
-        console.log(data)
+
     }
+
+    if (data != null)
+        var { vote_data: { votes } } = data
+
+
+
 
     return (
         <div className='poll-box'>
@@ -42,10 +49,10 @@ function SinglePoll(props) {
                 <li><button onClick={handleClick} className='vote-btn option4'>{poll.option4}</button></li>
             </ul>
             <ul className='flex'>
-                <li className='vote-count'>{poll.option1}</li>
-                <li className='vote-count'>{poll.option1}</li>
-                <li className='vote-count'>{poll.option1}</li>
-                <li className='vote-count'>{poll.option1}</li>
+                <li className='vote-count'>{votes ? `${votes.option1} votes` : errorMsg ? errorMsg : null}</li>
+                <li className='vote-count'>{votes ? `${votes.option2} votes` : null}</li>
+                <li className='vote-count'>{votes ? `${votes.option3} votes` : null}</li>
+                <li className='vote-count'>{votes ? `${votes.option4} votes` : null}</li>
             </ul>
         </div>
     )
