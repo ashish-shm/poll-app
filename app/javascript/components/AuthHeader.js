@@ -7,7 +7,7 @@ function AuthHeader(props) {
     "X-CSRF-TOKEN": document.querySelector('[name="csrf-token"]').content,
   };
 
-  const handleClick = () => {
+  const handleLogOutClick = () => {
     fetch(url, {
       method: "DELETE",
       headers: headers,
@@ -24,7 +24,7 @@ function AuthHeader(props) {
       </a>
       <nav className="flex">
         <h1 className="link">{props.loggedInUser}</h1>
-        <h1 className="link" onClick={handleClick}>
+        <h1 className="link" onClick={handleLogOutClick}>
           Logout
         </h1>
       </nav>

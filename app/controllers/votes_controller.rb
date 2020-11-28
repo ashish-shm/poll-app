@@ -1,23 +1,19 @@
 class VotesController < ApplicationController
-  before_action :current_user
+  before_action :current_user, :get_poll
   
   def create
-    puts params[:poll_id]
-    puts params[:option]
-
-    if !logged_in?
+    unless logged_in?
       render status: :forbidden, json: { message: { error: "User is not logged in" } }
 
     end
 
-    if !has_voted(params[:poll_id])
-      @vote = Vote.new
-        @vote.poll_id =  params[:poll_id]
+    unless has_voted(params[:poll_id])
+        @vote =  @poll.votes.new if @poll.present?
         @vote.user_id = current_user.id
        
       
-      #Increment the vote
-      vote_increment(params[:option])
+        #Increment the vote
+        @vote.vote_increment(params[:option])
           
         if @vote.save
           votes = Vote.where(poll_id: params[:poll_id])
@@ -35,30 +31,21 @@ class VotesController < ApplicationController
   end
 
 
-  def vote_increment(id)
-    case id
-    when "option1"
-      @vote.option1 +=1
-    when "option2"
-      @vote.option2 +=1
-    when "option3"
-      @vote.option3 +=1
-    when "option4"
-      @vote.option4 +=1
-    else
-      @vote
-    end
-  end
+  
 
   private
     def has_voted(id)
       temp = Vote.find_by(poll_id: id, user_id: current_user.id)
-      if temp
+      if temp.present?
         return true
       else
         return false
       end
 
+    end
+
+    def get_poll
+      @poll = Poll.find(params[:poll_id]) if params[:poll_id].present?
     end
 
    
