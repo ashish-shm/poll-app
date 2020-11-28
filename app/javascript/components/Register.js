@@ -25,7 +25,7 @@ function Register(props) {
         body: JSON.stringify({ user: inputs }),
       })
         .then((res) => {
-          if (res.status == 200) window.location.href = "/";
+          if (res.status == 200) window.location.href = "/login";
         })
         .catch((err) => setError(err));
     }

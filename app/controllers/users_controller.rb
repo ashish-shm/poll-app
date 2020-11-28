@@ -6,7 +6,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    log_in @user if @user.save
+    if @user.save
+      render status: :ok, json: { message:  "User is successfully registered!"}
+    else
+      render status: :unprocessable_entity, json: { error: 'User not created'  }
+    end
   end
 
   private
