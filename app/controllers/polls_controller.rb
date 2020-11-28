@@ -2,7 +2,7 @@ class PollsController < ApplicationController
   before_action :current_user
 
   def index
-    @polls = Poll.order("created_at DESC")
+    @polls = Poll.all
   end
 
   def create
