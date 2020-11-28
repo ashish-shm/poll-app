@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import Constants from "./Constants";
 
 function AuthHeader(props) {
-  let url = "http://localhost:3000/logout";
-  const headers = {
-    "Content-Type": "application/json",
-    "X-CSRF-TOKEN": document.querySelector('[name="csrf-token"]').content,
-  };
+  const url = "http://localhost:3000/logout";
+  const { loggedInUser } = props;
+  const [error, setError] = useState(null);
 
   const handleLogOutClick = () => {
     fetch(url, {
       method: "DELETE",
-      headers: headers,
+      headers: Constants.Headers,
     })
       .then((res) => {
         if (res.status == 204) window.location.href = "/";
@@ -23,7 +22,7 @@ function AuthHeader(props) {
         Poll-App
       </a>
       <nav className="flex">
-        <h1 className="link">{props.loggedInUser}</h1>
+        <h1 className="link">{loggedInUser}</h1>
         <h1 className="link" onClick={handleLogOutClick}>
           Logout
         </h1>
