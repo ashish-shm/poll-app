@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Constants from "./Constants";
 
 function AuthHeader(props) {
-  const url = "http://localhost:3000/logout";
+  const url = window.location.origin + "/logout";
   const { loggedInUser } = props;
   const [error, setError] = useState(null);
 
