@@ -6,7 +6,7 @@ function Register(props) {
   const [inputs, setInputs] = useState({});
   const { loggedInUser } = props;
 
-  const url = "http://localhost:3000/register";
+  const url = window.location.href + "/register";
 
   const handleInputChange = (event) => {
     event.persist();
