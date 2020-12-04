@@ -6,7 +6,7 @@ import Constants from "./Constants";
 function NewPoll(props) {
   const { isLoggedIn, loggedInUser } = props;
   const [inputs, setInputs] = useState({});
-  const url = "http://localhost:3000/polls";
+  const url = window.location.origin + "/polls";
 
   const handleInputChange = (event) => {
     event.persist();

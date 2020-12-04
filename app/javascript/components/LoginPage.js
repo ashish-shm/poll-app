@@ -5,7 +5,7 @@ import Constants from "./Constants";
 function LoginPage(props) {
   const [inputs, setInputs] = useState({});
   const { loggedInUser } = props;
-  const url = "http://localhost:3000/login";
+  const url = window.location.href;
 
   const handleInputChange = (event) => {
     event.persist();

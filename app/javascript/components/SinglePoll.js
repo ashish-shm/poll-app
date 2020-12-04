@@ -6,7 +6,7 @@ function SinglePoll(props) {
   const [error, setError] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [data, setData] = useState(null);
-  var url = `http://localhost:3000/polls/${poll.id}/votes`;
+  var url = `${window.location.href}/${poll.id}/votes`;
 
   var handleClick = async (event) => {
     var optionVal = await event.target.className.split(" ")[1];

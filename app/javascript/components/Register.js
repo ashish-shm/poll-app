@@ -6,7 +6,7 @@ function Register(props) {
   const [inputs, setInputs] = useState({});
   const { loggedInUser } = props;
 
-  const url = window.location.href + "/register";
+  const url = window.location.href;
 
   const handleInputChange = (event) => {
     event.persist();
